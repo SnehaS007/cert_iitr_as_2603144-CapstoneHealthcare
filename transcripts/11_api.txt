@@ -5,10 +5,10 @@ GET /health -> 200 {'status': 'ok', 'mock_llm': True, 'collection': 'kb_sentence
 POST /ask -> 200 answer=Culture and biopsy reports can take up to 7 working days. The patient uploads existing reports and prescriptions, and th...
 POST /ask (injection) -> 400 input_rejected: Request blocked by guardrail: override_instructions, role_hijack
 POST /ask (oversized) -> 413 budget_exceeded: [preflight] request needs ~11050 tokens (~$0.0331); per-request cap is 6000 tokens.
-POST /ask (invalid session_id) -> 422 {'trace_id': 'af130db1dd0546f8a3704334a386e696', 'error': 'validation_error', 'detail': 'body.session_id: string_pattern_mismatch'} (no raw input echoed)
+POST /ask (invalid session_id) -> 422 {'trace_id': '262decc653b249e18ce14065cb67bd94', 'error': 'validation_error', 'detail': 'body.session_id: string_pattern_mismatch'} (no raw input echoed)
 POST /add-document -> 200 {'doc_id': 'parking_policy', 'chunks_indexed': {'kb_fixed': 1, 'kb_sentence': 2}, 'cache_entries_cleared': 1}
 POST /add-document (duplicate) -> 409 conflict
-POST /ask (new doc) -> 200 answer=Valet parking is offered at partner clinics on weekdays. Walk-in visits are accepted only when an open slot remains on the clinic's schedule
+POST /ask (new doc) -> 200 answer=Free parking is available for patients for up to two hours. Walk-in visits are accepted only when an open slot remains on the clinic's sched
 
 WebSocket /ws/chat
   client A <- {'type': 'session', 'session_id': 'ws-a'}

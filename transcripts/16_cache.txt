@@ -1,7 +1,7 @@
 ### Task 16 - Response caching
 ### MOCK_LLM=True | embedder=sentence-transformers/all-MiniLM-L6-v2
 
-Request 1: cache_hit=False | grounded-generation LLM calls 0 -> 1 | cache hits=0 misses=1 | 308.2 ms end-to-end
-Request 2: cache_hit=True | grounded-generation LLM calls 1 -> 1 | cache hits=1 misses=1 | 509.4 ms end-to-end
+Request 1: cache_hit=False | grounded-generation LLM calls 0 -> 1 | cache hits=0 misses=1 | 627.6 ms end-to-end
+Request 2: cache_hit=True | grounded-generation LLM calls 1 -> 1 | cache hits=1 misses=1 | 393.2 ms end-to-end
 Second request was normalized to the same key, served from cache, and made no generation-LLM call.
 Answers identical: True
