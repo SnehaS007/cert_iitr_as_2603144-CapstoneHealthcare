@@ -6,8 +6,8 @@ Entries containing the raw demo phone number: 0
 
 Sample entry with masked PII:
 {
-  "@timestamp": "2026-11-08T05:39:33.150103+00:00",
-  "trace_id": "342cf452eebf4f36af1f2e30d719f29d",
+  "@timestamp": "2026-11-08T07:48:27.053625+00:00",
+  "trace_id": "a37d4083149046d7b6d7e149beeb220c",
   "endpoint": "/ask",
   "session_id": "guard-demo",
   "masked_query": "My number is [PHONE_MASKED], can I get a video consultation for my skin rash?",
@@ -29,10 +29,10 @@ Sample entry with masked PII:
   "stage_timings_ms": {
     "input_guard": 0.04,
     "budget": 0.02,
-    "memory": 0.01,
-    "crew": 185.6,
-    "output_guard": 0.04,
-    "review": 9.44
+    "memory": 0.02,
+    "crew": 791.06,
+    "output_guard": 0.03,
+    "review": 9.64
   },
-  "total_ms": 197.71
+  "total_ms": 804.26
 }
