@@ -1,0 +1,10 @@
+### Task 8 - Session memory: fresh session
+### MOCK_LLM=True | embedder=sentence-transformers/all-MiniLM-L6-v2
+
+Turn 1 [session fresh-session] user: What was the consultation fee for it?
+  record_id resolved from: none -> None
+  answer: The exact fee is shown on the doctor's profile before the booking is confirmed. A second opinion is charged at the reviewing doctor's standard consultation fee.
+  grounded=True sources=['consultation_fee_structure', 'second_opinion_process'] refusal_reason=None
+  review: approved=True reason=All claims are supported by the evidence.
+  guardrail_events=[] cache_hit=False
+  stored history before this turn: 0 messages (new session); appointment in answer: None

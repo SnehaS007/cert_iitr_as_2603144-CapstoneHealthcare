@@ -1,0 +1,82 @@
+### Task 5 - Chunking strategy evaluation
+### MOCK_LLM=True | embedder=sentence-transformers/all-MiniLM-L6-v2
+
+===== kb_fixed (top-3 chunks -> parent docs, deduplicated) =====
+Q1: How much does a cardiology consultation cost?
+    chunks:    ['consultation_fee_structure::fixed::1', 'consultation_fee_structure::fixed::2', 'consultation_fee_structure::fixed::0']
+    retrieved: ['consultation_fee_structure']
+    relevant:  ['consultation_fee_structure']   hits: ['consultation_fee_structure']
+    P = 1/1 = 1.000   R = 1/1 = 1.000
+Q2: Can I reschedule my appointment, and is there a charge if I do it late?
+    chunks:    ['cancellation_rescheduling_window::fixed::0', 'cancellation_rescheduling_window::fixed::1', 'cancellation_rescheduling_window::fixed::2']
+    retrieved: ['cancellation_rescheduling_window']
+    relevant:  ['cancellation_rescheduling_window']   hits: ['cancellation_rescheduling_window']
+    P = 1/1 = 1.000   R = 1/1 = 1.000
+Q3: When will my lipid profile blood test results be ready?
+    chunks:    ['lab_test_turnaround::fixed::0', 'lab_test_turnaround::fixed::1', 'appointment_booking_policy::fixed::0']
+    retrieved: ['lab_test_turnaround', 'appointment_booking_policy']
+    relevant:  ['lab_test_turnaround']   hits: ['lab_test_turnaround']
+    P = 1/2 = 0.500   R = 1/1 = 1.000
+Q4: Is my follow-up visit discounted if I go back to the same doctor after 10 days?
+    chunks:    ['follow_up_discount_policy::fixed::0', 'follow_up_discount_policy::fixed::1', 'prescription_refill_policy::fixed::1']
+    retrieved: ['follow_up_discount_policy', 'prescription_refill_policy']
+    relevant:  ['follow_up_discount_policy']   hits: ['follow_up_discount_policy']
+    P = 1/2 = 0.500   R = 1/1 = 1.000
+Q5: My elderly father cannot walk well. Can a doctor visit him at home, or can he use a video consultation?
+    chunks:    ['home_visit_eligibility::fixed::0', 'telemedicine_eligibility::fixed::1', 'telemedicine_eligibility::fixed::0']
+    retrieved: ['home_visit_eligibility', 'telemedicine_eligibility']
+    relevant:  ['home_visit_eligibility', 'telemedicine_eligibility']   hits: ['home_visit_eligibility', 'telemedicine_eligibility']
+    P = 2/2 = 1.000   R = 2/2 = 1.000
+Q6: How do I claim insurance for my consultation, and who can see my medical records?
+    chunks:    ['insurance_claim_process::fixed::0', 'insurance_claim_process::fixed::1', 'patient_data_privacy::fixed::0']
+    retrieved: ['insurance_claim_process', 'patient_data_privacy']
+    relevant:  ['insurance_claim_process', 'patient_data_privacy']   hits: ['insurance_claim_process', 'patient_data_privacy']
+    P = 2/2 = 1.000   R = 2/2 = 1.000
+Mean precision = 0.833   Mean recall = 1.000   Mean F1 = 0.889
+
+===== kb_sentence (top-3 chunks -> parent docs, deduplicated) =====
+Q1: How much does a cardiology consultation cost?
+    chunks:    ['consultation_fee_structure::sentence::3', 'consultation_fee_structure::sentence::4', 'consultation_fee_structure::sentence::1']
+    retrieved: ['consultation_fee_structure']
+    relevant:  ['consultation_fee_structure']   hits: ['consultation_fee_structure']
+    P = 1/1 = 1.000   R = 1/1 = 1.000
+Q2: Can I reschedule my appointment, and is there a charge if I do it late?
+    chunks:    ['cancellation_rescheduling_window::sentence::0', 'cancellation_rescheduling_window::sentence::3', 'cancellation_rescheduling_window::sentence::1']
+    retrieved: ['cancellation_rescheduling_window']
+    relevant:  ['cancellation_rescheduling_window']   hits: ['cancellation_rescheduling_window']
+    P = 1/1 = 1.000   R = 1/1 = 1.000
+Q3: When will my lipid profile blood test results be ready?
+    chunks:    ['lab_test_turnaround::sentence::0', 'lab_test_turnaround::sentence::3', 'lab_test_turnaround::sentence::2']
+    retrieved: ['lab_test_turnaround']
+    relevant:  ['lab_test_turnaround']   hits: ['lab_test_turnaround']
+    P = 1/1 = 1.000   R = 1/1 = 1.000
+Q4: Is my follow-up visit discounted if I go back to the same doctor after 10 days?
+    chunks:    ['follow_up_discount_policy::sentence::0', 'follow_up_discount_policy::sentence::3', 'follow_up_discount_policy::sentence::2']
+    retrieved: ['follow_up_discount_policy']
+    relevant:  ['follow_up_discount_policy']   hits: ['follow_up_discount_policy']
+    P = 1/1 = 1.000   R = 1/1 = 1.000
+Q5: My elderly father cannot walk well. Can a doctor visit him at home, or can he use a video consultation?
+    chunks:    ['home_visit_eligibility::sentence::0', 'telemedicine_eligibility::sentence::0', 'home_visit_eligibility::sentence::2']
+    retrieved: ['home_visit_eligibility', 'telemedicine_eligibility']
+    relevant:  ['home_visit_eligibility', 'telemedicine_eligibility']   hits: ['home_visit_eligibility', 'telemedicine_eligibility']
+    P = 2/2 = 1.000   R = 2/2 = 1.000
+Q6: How do I claim insurance for my consultation, and who can see my medical records?
+    chunks:    ['insurance_claim_process::sentence::1', 'insurance_claim_process::sentence::0', 'insurance_claim_process::sentence::2']
+    retrieved: ['insurance_claim_process']
+    relevant:  ['insurance_claim_process', 'patient_data_privacy']   hits: ['insurance_claim_process']
+    P = 1/1 = 1.000   R = 1/2 = 0.500
+Mean precision = 1.000   Mean recall = 0.917   Mean F1 = 0.944
+
+Summary (markdown):
+| Query | Fixed P | Fixed R | Sentence P | Sentence R |
+|---|---|---|---|---|
+| Q1 | 1/1 = 1.00 | 1/1 = 1.00 | 1/1 = 1.00 | 1/1 = 1.00 |
+| Q2 | 1/1 = 1.00 | 1/1 = 1.00 | 1/1 = 1.00 | 1/1 = 1.00 |
+| Q3 | 1/2 = 0.50 | 1/1 = 1.00 | 1/1 = 1.00 | 1/1 = 1.00 |
+| Q4 | 1/2 = 0.50 | 1/1 = 1.00 | 1/1 = 1.00 | 1/1 = 1.00 |
+| Q5 | 2/2 = 1.00 | 2/2 = 1.00 | 2/2 = 1.00 | 2/2 = 1.00 |
+| Q6 | 2/2 = 1.00 | 2/2 = 1.00 | 1/1 = 1.00 | 1/2 = 0.50 |
+| **Mean** | 0.833 | 1.000 | 1.000 | 0.917 |
+
+Recommended collection (highest mean per-query F1; tie -> highest mean recall; tie -> kb_sentence): kb_sentence
+Written to artifacts\chunking_eval.json

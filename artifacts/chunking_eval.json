@@ -1,0 +1,299 @@
+{
+  "embedder": "sentence-transformers/all-MiniLM-L6-v2",
+  "collections": {
+    "kb_fixed": {
+      "k": 3,
+      "rows": [
+        {
+          "retrieved_docs": [
+            "consultation_fee_structure"
+          ],
+          "hits": [
+            "consultation_fee_structure"
+          ],
+          "precision": 1.0,
+          "recall": 1.0,
+          "precision_expr": "1/1",
+          "recall_expr": "1/1",
+          "query": "How much does a cardiology consultation cost?",
+          "relevant": [
+            "consultation_fee_structure"
+          ],
+          "chunk_ids": [
+            "consultation_fee_structure::fixed::1",
+            "consultation_fee_structure::fixed::2",
+            "consultation_fee_structure::fixed::0"
+          ],
+          "f1": 1.0
+        },
+        {
+          "retrieved_docs": [
+            "cancellation_rescheduling_window"
+          ],
+          "hits": [
+            "cancellation_rescheduling_window"
+          ],
+          "precision": 1.0,
+          "recall": 1.0,
+          "precision_expr": "1/1",
+          "recall_expr": "1/1",
+          "query": "Can I reschedule my appointment, and is there a charge if I do it late?",
+          "relevant": [
+            "cancellation_rescheduling_window"
+          ],
+          "chunk_ids": [
+            "cancellation_rescheduling_window::fixed::0",
+            "cancellation_rescheduling_window::fixed::1",
+            "cancellation_rescheduling_window::fixed::2"
+          ],
+          "f1": 1.0
+        },
+        {
+          "retrieved_docs": [
+            "lab_test_turnaround",
+            "appointment_booking_policy"
+          ],
+          "hits": [
+            "lab_test_turnaround"
+          ],
+          "precision": 0.5,
+          "recall": 1.0,
+          "precision_expr": "1/2",
+          "recall_expr": "1/1",
+          "query": "When will my lipid profile blood test results be ready?",
+          "relevant": [
+            "lab_test_turnaround"
+          ],
+          "chunk_ids": [
+            "lab_test_turnaround::fixed::0",
+            "lab_test_turnaround::fixed::1",
+            "appointment_booking_policy::fixed::0"
+          ],
+          "f1": 0.6666666666666666
+        },
+        {
+          "retrieved_docs": [
+            "follow_up_discount_policy",
+            "prescription_refill_policy"
+          ],
+          "hits": [
+            "follow_up_discount_policy"
+          ],
+          "precision": 0.5,
+          "recall": 1.0,
+          "precision_expr": "1/2",
+          "recall_expr": "1/1",
+          "query": "Is my follow-up visit discounted if I go back to the same doctor after 10 days?",
+          "relevant": [
+            "follow_up_discount_policy"
+          ],
+          "chunk_ids": [
+            "follow_up_discount_policy::fixed::0",
+            "follow_up_discount_policy::fixed::1",
+            "prescription_refill_policy::fixed::1"
+          ],
+          "f1": 0.6666666666666666
+        },
+        {
+          "retrieved_docs": [
+            "home_visit_eligibility",
+            "telemedicine_eligibility"
+          ],
+          "hits": [
+            "home_visit_eligibility",
+            "telemedicine_eligibility"
+          ],
+          "precision": 1.0,
+          "recall": 1.0,
+          "precision_expr": "2/2",
+          "recall_expr": "2/2",
+          "query": "My elderly father cannot walk well. Can a doctor visit him at home, or can he use a video consultation?",
+          "relevant": [
+            "home_visit_eligibility",
+            "telemedicine_eligibility"
+          ],
+          "chunk_ids": [
+            "home_visit_eligibility::fixed::0",
+            "telemedicine_eligibility::fixed::1",
+            "telemedicine_eligibility::fixed::0"
+          ],
+          "f1": 1.0
+        },
+        {
+          "retrieved_docs": [
+            "insurance_claim_process",
+            "patient_data_privacy"
+          ],
+          "hits": [
+            "insurance_claim_process",
+            "patient_data_privacy"
+          ],
+          "precision": 1.0,
+          "recall": 1.0,
+          "precision_expr": "2/2",
+          "recall_expr": "2/2",
+          "query": "How do I claim insurance for my consultation, and who can see my medical records?",
+          "relevant": [
+            "insurance_claim_process",
+            "patient_data_privacy"
+          ],
+          "chunk_ids": [
+            "insurance_claim_process::fixed::0",
+            "insurance_claim_process::fixed::1",
+            "patient_data_privacy::fixed::0"
+          ],
+          "f1": 1.0
+        }
+      ],
+      "mean_precision": 0.8333333333333334,
+      "mean_recall": 1.0,
+      "mean_f1": 0.8888888888888888
+    },
+    "kb_sentence": {
+      "k": 3,
+      "rows": [
+        {
+          "retrieved_docs": [
+            "consultation_fee_structure"
+          ],
+          "hits": [
+            "consultation_fee_structure"
+          ],
+          "precision": 1.0,
+          "recall": 1.0,
+          "precision_expr": "1/1",
+          "recall_expr": "1/1",
+          "query": "How much does a cardiology consultation cost?",
+          "relevant": [
+            "consultation_fee_structure"
+          ],
+          "chunk_ids": [
+            "consultation_fee_structure::sentence::3",
+            "consultation_fee_structure::sentence::4",
+            "consultation_fee_structure::sentence::1"
+          ],
+          "f1": 1.0
+        },
+        {
+          "retrieved_docs": [
+            "cancellation_rescheduling_window"
+          ],
+          "hits": [
+            "cancellation_rescheduling_window"
+          ],
+          "precision": 1.0,
+          "recall": 1.0,
+          "precision_expr": "1/1",
+          "recall_expr": "1/1",
+          "query": "Can I reschedule my appointment, and is there a charge if I do it late?",
+          "relevant": [
+            "cancellation_rescheduling_window"
+          ],
+          "chunk_ids": [
+            "cancellation_rescheduling_window::sentence::0",
+            "cancellation_rescheduling_window::sentence::3",
+            "cancellation_rescheduling_window::sentence::1"
+          ],
+          "f1": 1.0
+        },
+        {
+          "retrieved_docs": [
+            "lab_test_turnaround"
+          ],
+          "hits": [
+            "lab_test_turnaround"
+          ],
+          "precision": 1.0,
+          "recall": 1.0,
+          "precision_expr": "1/1",
+          "recall_expr": "1/1",
+          "query": "When will my lipid profile blood test results be ready?",
+          "relevant": [
+            "lab_test_turnaround"
+          ],
+          "chunk_ids": [
+            "lab_test_turnaround::sentence::0",
+            "lab_test_turnaround::sentence::3",
+            "lab_test_turnaround::sentence::2"
+          ],
+          "f1": 1.0
+        },
+        {
+          "retrieved_docs": [
+            "follow_up_discount_policy"
+          ],
+          "hits": [
+            "follow_up_discount_policy"
+          ],
+          "precision": 1.0,
+          "recall": 1.0,
+          "precision_expr": "1/1",
+          "recall_expr": "1/1",
+          "query": "Is my follow-up visit discounted if I go back to the same doctor after 10 days?",
+          "relevant": [
+            "follow_up_discount_policy"
+          ],
+          "chunk_ids": [
+            "follow_up_discount_policy::sentence::0",
+            "follow_up_discount_policy::sentence::3",
+            "follow_up_discount_policy::sentence::2"
+          ],
+          "f1": 1.0
+        },
+        {
+          "retrieved_docs": [
+            "home_visit_eligibility",
+            "telemedicine_eligibility"
+          ],
+          "hits": [
+            "home_visit_eligibility",
+            "telemedicine_eligibility"
+          ],
+          "precision": 1.0,
+          "recall": 1.0,
+          "precision_expr": "2/2",
+          "recall_expr": "2/2",
+          "query": "My elderly father cannot walk well. Can a doctor visit him at home, or can he use a video consultation?",
+          "relevant": [
+            "home_visit_eligibility",
+            "telemedicine_eligibility"
+          ],
+          "chunk_ids": [
+            "home_visit_eligibility::sentence::0",
+            "telemedicine_eligibility::sentence::0",
+            "home_visit_eligibility::sentence::2"
+          ],
+          "f1": 1.0
+        },
+        {
+          "retrieved_docs": [
+            "insurance_claim_process"
+          ],
+          "hits": [
+            "insurance_claim_process"
+          ],
+          "precision": 1.0,
+          "recall": 0.5,
+          "precision_expr": "1/1",
+          "recall_expr": "1/2",
+          "query": "How do I claim insurance for my consultation, and who can see my medical records?",
+          "relevant": [
+            "insurance_claim_process",
+            "patient_data_privacy"
+          ],
+          "chunk_ids": [
+            "insurance_claim_process::sentence::1",
+            "insurance_claim_process::sentence::0",
+            "insurance_claim_process::sentence::2"
+          ],
+          "f1": 0.6666666666666666
+        }
+      ],
+      "mean_precision": 1.0,
+      "mean_recall": 0.9166666666666666,
+      "mean_f1": 0.9444444444444445
+    }
+  },
+  "recommended_collection": "kb_sentence",
+  "rule": "highest mean per-query F1; tie -> highest mean recall; tie -> kb_sentence"
+}

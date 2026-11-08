@@ -1,0 +1,88 @@
+{
+  "kb_fixed": {
+    "in_scope": [
+      {
+        "query": "What is the process for getting a second opinion?",
+        "top1_similarity": 0.7192
+      },
+      {
+        "query": "How long does a biopsy report take?",
+        "top1_similarity": 0.7588
+      },
+      {
+        "query": "Can I get my prescription refilled without seeing the doctor again?",
+        "top1_similarity": 0.7633
+      },
+      {
+        "query": "What should I do if I have severe chest pain?",
+        "top1_similarity": 0.2637
+      },
+      {
+        "query": "How far ahead can I book an appointment?",
+        "top1_similarity": 0.6841
+      }
+    ],
+    "out_of_scope": [
+      {
+        "query": "What is the capital of Australia?",
+        "top1_similarity": 0.0474
+      },
+      {
+        "query": "Recommend a good gaming laptop under 80000 rupees.",
+        "top1_similarity": 0.144
+      },
+      {
+        "query": "How do I change a flat tyre on my car?",
+        "top1_similarity": 0.1029
+      }
+    ],
+    "min_in_scope": 0.2637,
+    "max_out_of_scope": 0.144,
+    "margin": 0.1197,
+    "threshold": 0.2038,
+    "embedder": "sentence-transformers/all-MiniLM-L6-v2"
+  },
+  "kb_sentence": {
+    "in_scope": [
+      {
+        "query": "What is the process for getting a second opinion?",
+        "top1_similarity": 0.6954
+      },
+      {
+        "query": "How long does a biopsy report take?",
+        "top1_similarity": 0.7899
+      },
+      {
+        "query": "Can I get my prescription refilled without seeing the doctor again?",
+        "top1_similarity": 0.7798
+      },
+      {
+        "query": "What should I do if I have severe chest pain?",
+        "top1_similarity": 0.4499
+      },
+      {
+        "query": "How far ahead can I book an appointment?",
+        "top1_similarity": 0.6971
+      }
+    ],
+    "out_of_scope": [
+      {
+        "query": "What is the capital of Australia?",
+        "top1_similarity": 0.0286
+      },
+      {
+        "query": "Recommend a good gaming laptop under 80000 rupees.",
+        "top1_similarity": 0.1524
+      },
+      {
+        "query": "How do I change a flat tyre on my car?",
+        "top1_similarity": 0.072
+      }
+    ],
+    "min_in_scope": 0.4499,
+    "max_out_of_scope": 0.1524,
+    "margin": 0.2975,
+    "threshold": 0.3011,
+    "embedder": "sentence-transformers/all-MiniLM-L6-v2"
+  }
+}

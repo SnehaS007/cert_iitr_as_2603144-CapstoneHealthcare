@@ -1,0 +1,20 @@
+### Task 15 - Governance
+### MOCK_LLM=True | embedder=sentence-transformers/all-MiniLM-L6-v2
+
+Application layer — least autonomy
+  TOOL_POLICY = {'rag_lookup': ['Retrieval Agent'], 'check_appointment_status': ['Lookup Agent']}
+  wiring check_appointment_status to 'Response Composer' -> BLOCKED: Agent 'Response Composer' may not hold tool 'check_appointment_status' (allowed: ['Lookup Agent'])
+  wiring check_appointment_status to 'Retrieval Agent' -> BLOCKED: Agent 'Retrieval Agent' may not hold tool 'check_appointment_status' (allowed: ['Lookup Agent'])
+  Guard: every agent is created by build_agent(), which checks each tool against TOOL_POLICY and raises before the agent exists; verify_crew() re-checks the assembled crew; delegation is disabled on every agent, so no agent can reach the lookup tool through another agent.
+
+Risk classification: High
+  The system reads appointment records tied to identifiable patients (status, specialty, fees, follow-up need) and answers questions about clinical services such as emergency protocol, prescription refills and telemedicine eligibility. The brief's scheme lists medical data as High risk. A wrong or ungrounded answer could delay a patient seeking care, and a data leak would be a health-privacy breach. High risk is why the system masks PII before any processing or logging, refuses when retrieval does not support an answer, routes every answer through an independent review team, restricts record access to one agent, caps per-request spend, and writes an audit log.
+  - data: Fixed-format PII (phone numbers) masked before agents, memory, cache and logs
+  - model: Deterministic MOCK_LLM; extractive answers; groundedness gate; AutoGen review
+  - application: Least autonomy: only the Lookup Agent holds check_appointment_status; no delegation
+  - runtime: Per-request token/cost cap; JSONL audit log with trace IDs; response cache
+
+Runtime layer — per-request token/cost budget
+  normal request: projected 4333 / consumed 2974 tokens (cap 6000), cost ~$0.008922 -> answered=True
+  oversized request (3000 chars) -> REJECTED before any agent ran: [preflight] request needs ~6550 tokens (~$0.0197); per-request cap is 6000 tokens.
+  runtime hard stop (cap lowered to 2000 for the demo) -> STOPPED mid-crew: [runtime] request has consumed ~3002 tokens (~$0.0090); per-request cap is 2000 tokens.

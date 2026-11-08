@@ -1,0 +1,30 @@
+### Task 4 - Threshold calibration
+### MOCK_LLM=True | embedder=sentence-transformers/all-MiniLM-L6-v2
+
+[kb_fixed] top-1 cosine similarity
+  type          similarity  query
+  in-scope          0.7192  What is the process for getting a second opinion?
+  in-scope          0.7588  How long does a biopsy report take?
+  in-scope          0.7633  Can I get my prescription refilled without seeing the doctor again?
+  in-scope          0.2637  What should I do if I have severe chest pain?
+  in-scope          0.6841  How far ahead can I book an appointment?
+  out-of-scope      0.0474  What is the capital of Australia?
+  out-of-scope      0.1440  Recommend a good gaming laptop under 80000 rupees.
+  out-of-scope      0.1029  How do I change a flat tyre on my car?
+  lowest in-scope = 0.2637, highest out-of-scope = 0.1440, margin = 0.1197
+  chosen threshold (midpoint) = 0.2038
+
+[kb_sentence] top-1 cosine similarity
+  type          similarity  query
+  in-scope          0.6954  What is the process for getting a second opinion?
+  in-scope          0.7899  How long does a biopsy report take?
+  in-scope          0.7798  Can I get my prescription refilled without seeing the doctor again?
+  in-scope          0.4499  What should I do if I have severe chest pain?
+  in-scope          0.6971  How far ahead can I book an appointment?
+  out-of-scope      0.0286  What is the capital of Australia?
+  out-of-scope      0.1524  Recommend a good gaming laptop under 80000 rupees.
+  out-of-scope      0.0720  How do I change a flat tyre on my car?
+  lowest in-scope = 0.4499, highest out-of-scope = 0.1524, margin = 0.2975
+  chosen threshold (midpoint) = 0.3011
+
+Written to artifacts\calibration.json

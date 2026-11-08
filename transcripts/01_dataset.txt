@@ -1,0 +1,79 @@
+### Task 1 - Dataset design and validation
+### MOCK_LLM=True | embedder=sentence-transformers/all-MiniLM-L6-v2
+
+Dataset: seed=2027, n=50
+Category weights: {'General Medicine': 0.3, 'Dermatology': 0.2, 'Pediatrics': 0.2, 'Cardiology': 0.15, 'Orthopedics': 0.15}
+Status weights:   {'Completed': 0.35, 'Scheduled': 0.3, 'Rescheduled': 0.13, 'Cancelled': 0.12, 'No-Show': 0.1}
+Fee bands (INR):  {'General Medicine': (300, 700), 'Pediatrics': (400, 900), 'Dermatology': (500, 1200), 'Orthopedics': (600, 1500), 'Cardiology': (800, 2000)} (rounded to 50)
+follow_up_required probability: 0.2
+
+Count per category (each must be >= 3):
+  General Medicine  20
+  Dermatology       9
+  Pediatrics        10
+  Cardiology        8
+  Orthopedics       3
+
+Count per status (each must be >= 1):
+  Completed         21
+  Scheduled         12
+  Rescheduled       5
+  Cancelled         5
+  No-Show           7
+
+follow_up_required=True: 11/50 = 22.0% (band 10-30%)
+Fee range observed: INR 300-1900
+
+Validation: PASSED (all structural thresholds met)
+
+record_id  category          status       fee_inr  days follow_up
+APT-1001   General Medicine  Scheduled        300    20 False
+APT-1002   Dermatology       No-Show          700    12 True
+APT-1003   Pediatrics        Completed        750    19 True
+APT-1004   Pediatrics        Completed        550    30 False
+APT-1005   Orthopedics       Cancelled       1050    16 False
+APT-1006   Cardiology        Completed       1500    30 False
+APT-1007   Dermatology       Completed       1000    11 False
+APT-1008   Cardiology        Scheduled       1050    24 False
+APT-1009   General Medicine  Rescheduled      450    15 False
+APT-1010   General Medicine  No-Show          700    13 False
+APT-1011   General Medicine  Completed        600     2 True
+APT-1012   Pediatrics        Scheduled        800    16 False
+APT-1013   Dermatology       Completed        600     9 False
+APT-1014   Cardiology        Rescheduled     1900     0 False
+APT-1015   General Medicine  Completed        550     0 True
+APT-1016   General Medicine  Completed        500    16 False
+APT-1017   Dermatology       Scheduled        700    26 False
+APT-1018   Dermatology       No-Show          800     7 False
+APT-1019   Dermatology       Cancelled       1150    21 False
+APT-1020   General Medicine  Scheduled        650    21 False
+APT-1021   Cardiology        Completed       1700     4 False
+APT-1022   Dermatology       No-Show          750    22 False
+APT-1023   General Medicine  Scheduled        600    16 False
+APT-1024   Pediatrics        Cancelled        800     6 False
+APT-1025   Pediatrics        Cancelled        850     5 True
+APT-1026   Pediatrics        Completed        600    27 False
+APT-1027   Pediatrics        Completed        550    26 False
+APT-1028   Cardiology        Completed       1300    13 True
+APT-1029   Dermatology       Rescheduled      650     0 False
+APT-1030   Pediatrics        Completed        850     8 False
+APT-1031   General Medicine  Completed        500     8 False
+APT-1032   Cardiology        No-Show         1900    18 False
+APT-1033   General Medicine  Completed        400    20 False
+APT-1034   Dermatology       Scheduled        650    22 True
+APT-1035   General Medicine  Scheduled        650    16 False
+APT-1036   General Medicine  Completed        400    14 True
+APT-1037   General Medicine  Completed        350     5 False
+APT-1038   General Medicine  Rescheduled      350    15 True
+APT-1039   General Medicine  Cancelled        650    17 False
+APT-1040   Orthopedics       Scheduled        750     5 False
+APT-1041   General Medicine  No-Show          400    22 False
+APT-1042   Pediatrics        No-Show          900     2 False
+APT-1043   General Medicine  Rescheduled      300    27 True
+APT-1044   Cardiology        Scheduled       1700    24 False
+APT-1045   General Medicine  Completed        500    20 True
+APT-1046   Pediatrics        Completed        550     1 False
+APT-1047   Orthopedics       Scheduled        850    13 False
+APT-1048   General Medicine  Completed        650    20 False
+APT-1049   General Medicine  Completed        400    22 False
+APT-1050   Cardiology        Scheduled       1000    16 False

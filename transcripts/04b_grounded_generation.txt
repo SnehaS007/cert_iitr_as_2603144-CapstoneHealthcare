@@ -1,0 +1,82 @@
+### Task 4 - Grounded generation demo
+### MOCK_LLM=True | embedder=sentence-transformers/all-MiniLM-L6-v2
+
+===== Collection: kb_fixed | threshold = 0.2038 | k = 3 =====
+
+Q (in-scope): How much does a cardiology consultation cost?
+  top-1 similarity 0.7360 >= 0.2038 -> grounded answer [PASS]
+  retrieved: consultation_fee_structure::fixed::1 (0.736), consultation_fee_structure::fixed::2 (0.646), consultation_fee_structure::fixed::0 (0.585)
+  A: Cardiology consultations are the most expensive, ranging from INR 800 to INR 2,000. Consultation fees vary by specialty and by the individual doctor's experience. (Source: Consultation-fee structure by specialty)
+
+Q (in-scope): Can I reschedule my appointment, and is there a charge if I do it late?
+  top-1 similarity 0.6469 >= 0.2038 -> grounded answer [PASS]
+  retrieved: cancellation_rescheduling_window::fixed::0 (0.647), cancellation_rescheduling_window::fixed::1 (0.591), cancellation_rescheduling_window::fixed::2 (0.533)
+  A: An appointment can be cancelled or rescheduled free of charge up to 4 hours before the scheduled slot. Each appointment can be rescheduled a maximum of two times, after which it must be cancelled and booked again. (Source: Cancellation and rescheduling window)
+
+Q (in-scope): When will my lipid profile blood test results be ready?
+  top-1 similarity 0.6428 >= 0.2038 -> grounded answer [PASS]
+  retrieved: lab_test_turnaround::fixed::0 (0.643), lab_test_turnaround::fixed::1 (0.357), appointment_booking_policy::fixed::0 (0.235)
+  A: Routine blood tests such as a complete blood count or lipid profile are reported within 24 hours of sample collection. All lab reports are delivered to the patient's app inbox as soon as they are signed off by the pathologist. (Source: Lab-test turnaround times)
+
+Q (in-scope): Is my follow-up visit discounted if I go back to the same doctor after 10 days?
+  top-1 similarity 0.7531 >= 0.2038 -> grounded answer [PASS]
+  retrieved: follow_up_discount_policy::fixed::0 (0.753), follow_up_discount_policy::fixed::1 (0.740), prescription_refill_policy::fixed::1 (0.490)
+  A: The discount applies only when the doctor marked a follow-up as required during the original visit. A follow-up visit with the same doctor within 7 days of the original consultation is free of charge. (Source: Follow-up-visit discount policy)
+
+Q (in-scope): My elderly father cannot walk well. Can a doctor visit him at home, or can he use a video consultation?
+  top-1 similarity 0.5143 >= 0.2038 -> grounded answer [PASS]
+  retrieved: home_visit_eligibility::fixed::0 (0.514), telemedicine_eligibility::fixed::1 (0.459), telemedicine_eligibility::fixed::0 (0.458)
+  A: Home visits are available for patients over 65 years of age, patients with limited mobility, and newborns in their first month. Video consultations are available for follow-up visits, prescription reviews, dermatology concerns that can be assessed on camera, and general medicine queries. (Source: Home-visit eligibility; Telemedicine eligibility)
+
+Q (in-scope): How do I claim insurance for my consultation, and who can see my medical records?
+  top-1 similarity 0.6244 >= 0.2038 -> grounded answer [PASS]
+  retrieved: insurance_claim_process::fixed::0 (0.624), insurance_claim_process::fixed::1 (0.457), patient_data_privacy::fixed::0 (0.442)
+  A: After the consultation, the clinic issues an itemised invoice that the patient submits to the insurer along with the doctor's prescription. Patients with health insurance must upload their insurance card and policy details in the app before the visit. (Source: Insurance-claim process)
+
+Q (OUT-OF-SCOPE): What is a good recipe for butter chicken?
+  top-1 similarity -0.0072 < 0.2038 -> fallback [PASS]
+  retrieved: patient_data_privacy::fixed::1 (-0.007), patient_data_privacy::fixed::0 (-0.013), follow_up_discount_policy::fixed::0 (-0.020)
+  A: I don't know. I couldn't find this in the clinic's policy documents. Please contact Practo support for help with this question.
+
+MockGroundedLLM calls for kb_fixed: 6 (fallbacks never call the LLM)
+
+===== Collection: kb_sentence | threshold = 0.3011 | k = 3 =====
+
+Q (in-scope): How much does a cardiology consultation cost?
+  top-1 similarity 0.8636 >= 0.3011 -> grounded answer [PASS]
+  retrieved: consultation_fee_structure::sentence::3 (0.864), consultation_fee_structure::sentence::4 (0.626), consultation_fee_structure::sentence::1 (0.618)
+  A: Cardiology consultations are the most expensive, ranging from INR 800 to INR 2,000. General Medicine consultations cost between INR 300 and INR 700, and Pediatrics consultations cost between INR 400 and INR 900. (Source: Consultation-fee structure by specialty)
+
+Q (in-scope): Can I reschedule my appointment, and is there a charge if I do it late?
+  top-1 similarity 0.6616 >= 0.3011 -> grounded answer [PASS]
+  retrieved: cancellation_rescheduling_window::sentence::0 (0.662), cancellation_rescheduling_window::sentence::3 (0.572), cancellation_rescheduling_window::sentence::1 (0.526)
+  A: An appointment can be cancelled or rescheduled free of charge up to 4 hours before the scheduled slot. A patient who does not arrive within 15 minutes of the slot is marked as a No-Show and the full consultation fee is charged. (Source: Cancellation and rescheduling window)
+
+Q (in-scope): When will my lipid profile blood test results be ready?
+  top-1 similarity 0.7228 >= 0.3011 -> grounded answer [PASS]
+  retrieved: lab_test_turnaround::sentence::0 (0.723), lab_test_turnaround::sentence::3 (0.388), lab_test_turnaround::sentence::2 (0.339)
+  A: Routine blood tests such as a complete blood count or lipid profile are reported within 24 hours of sample collection. All lab reports are delivered to the patient's app inbox as soon as they are signed off by the pathologist. (Source: Lab-test turnaround times)
+
+Q (in-scope): Is my follow-up visit discounted if I go back to the same doctor after 10 days?
+  top-1 similarity 0.8002 >= 0.3011 -> grounded answer [PASS]
+  retrieved: follow_up_discount_policy::sentence::0 (0.800), follow_up_discount_policy::sentence::3 (0.760), follow_up_discount_policy::sentence::2 (0.673)
+  A: The discount applies only when the doctor marked a follow-up as required during the original visit. A follow-up visit with the same doctor within 7 days of the original consultation is free of charge. (Source: Follow-up-visit discount policy)
+
+Q (in-scope): My elderly father cannot walk well. Can a doctor visit him at home, or can he use a video consultation?
+  top-1 similarity 0.4933 >= 0.3011 -> grounded answer [PASS]
+  retrieved: home_visit_eligibility::sentence::0 (0.493), telemedicine_eligibility::sentence::0 (0.471), home_visit_eligibility::sentence::2 (0.428)
+  A: Home visits are available for patients over 65 years of age, patients with limited mobility, and newborns in their first month. Video consultations are available for follow-up visits, prescription reviews, dermatology concerns that can be assessed on camera, and general medicine queries. (Source: Home-visit eligibility; Telemedicine eligibility)
+
+Q (in-scope): How do I claim insurance for my consultation, and who can see my medical records?
+  top-1 similarity 0.6074 >= 0.3011 -> grounded answer [PASS]
+  retrieved: insurance_claim_process::sentence::1 (0.607), insurance_claim_process::sentence::0 (0.548), insurance_claim_process::sentence::2 (0.487)
+  A: After the consultation, the clinic issues an itemised invoice that the patient submits to the insurer along with the doctor's prescription. Patients with health insurance must upload their insurance card and policy details in the app before the visit. (Source: Insurance-claim process)
+
+Q (OUT-OF-SCOPE): What is a good recipe for butter chicken?
+  top-1 similarity -0.0073 < 0.3011 -> fallback [PASS]
+  retrieved: patient_data_privacy::sentence::3 (-0.007), patient_data_privacy::sentence::0 (-0.011), appointment_booking_policy::sentence::1 (-0.019)
+  A: I don't know. I couldn't find this in the clinic's policy documents. Please contact Practo support for help with this question.
+
+MockGroundedLLM calls for kb_sentence: 6 (fallbacks never call the LLM)
+
+All expectations met.

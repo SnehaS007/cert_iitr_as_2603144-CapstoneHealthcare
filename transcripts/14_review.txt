@@ -1,0 +1,17 @@
+### Task 14 - AutoGen review stage
+### MOCK_LLM=True | embedder=sentence-transformers/all-MiniLM-L6-v2
+
+=== A) genuine crew draft
+  draft: Cardiology consultations are the most expensive, ranging from INR 800 to INR 2,000. General Medicine consultations cost between INR 300 and INR 700, and Pediatrics consultations cost between INR 400 and INR 900.
+  [user] {"draft": "Cardiology consultations are the most expensive, ranging from INR 800 to INR 2,000. General Medicine consultations cost between INR 300 and INR 700, and Pediatrics consultations cost between INR 400 and INR 900.", "evidence": ["Cardiology consultations are the most expensive, ranging from INR 800 to INR 2,000.", "The exact fee is shown on the doctor's profile before the booking is confirmed.", "General Medicine consultations cost between INR 300 and INR 700, and Pediatrics consultations cost between INR 400 and INR 900."]}
+  [policy_compliance_reviewer] {"unsupported": [], "compliant": true}
+  [final_editor] {"approved":true,"final_answer":"Cardiology consultations are the most expensive, ranging from INR 800 to INR 2,000. General Medicine consultations cost between INR 300 and INR 700, and Pediatrics consultations cost between INR 400 and INR 900.","reason":"All claims are supported by the evidence."}
+  verdict: {'approved': True, 'final_answer': 'Cardiology consultations are the most expensive, ranging from INR 800 to INR 2,000. General Medicine consultations cost between INR 300 and INR 700, and Pediatrics consultations cost between INR 400 and INR 900.', 'reason': 'All claims are supported by the evidence.'}
+
+=== B) draft with a deliberately injected ungrounded claim
+  draft: Cardiology consultations are the most expensive, ranging from INR 800 to INR 2,000. General Medicine consultations cost between INR 300 and INR 700, and Pediatrics consultations cost between INR 400 and INR 900. Cardiology consultations are free on Sundays.
+  [user] {"draft": "Cardiology consultations are the most expensive, ranging from INR 800 to INR 2,000. General Medicine consultations cost between INR 300 and INR 700, and Pediatrics consultations cost between INR 400 and INR 900. Cardiology consultations are free on Sundays.", "evidence": ["Cardiology consultations are the most expensive, ranging from INR 800 to INR 2,000.", "The exact fee is shown on the doctor's profile before the booking is confirmed.", "General Medicine consultations cost between INR 300 and INR 700, and Pediatrics consultations cost between INR 400 and INR 900."]}
+  [policy_compliance_reviewer] {"unsupported": ["Cardiology consultations are free on Sundays."], "compliant": false}
+  [final_editor] {"approved":false,"final_answer":"Cardiology consultations are the most expensive, ranging from INR 800 to INR 2,000. General Medicine consultations cost between INR 300 and INR 700, and Pediatrics consultations cost between INR 400 and INR 900.","reason":"Removed 1 claim(s) not supported by the evidence: Cardiology consultations are free on Sundays."}
+  verdict: {'approved': False, 'final_answer': 'Cardiology consultations are the most expensive, ranging from INR 800 to INR 2,000. General Medicine consultations cost between INR 300 and INR 700, and Pediatrics consultations cost between INR 400 and INR 900.', 'reason': 'Removed 1 claim(s) not supported by the evidence: Cardiology consultations are free on Sundays.'}
+
