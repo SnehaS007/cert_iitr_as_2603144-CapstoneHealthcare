@@ -1,0 +1,35 @@
+# Practo Domain Support Agent — Python dependencies
+# Python 3.11-3.13 (tested on 3.12). NOT 3.14+: crewai declares requires_python "<3.14".
+#
+# Install order:
+#   1) pip install torch --index-url https://download.pytorch.org/whl/cpu   # CPU-only torch (avoids multi-GB CUDA wheels)
+#   2) pip install -r requirements.txt
+#   3) pip freeze > requirements.lock                                      # commit for reproducible grading
+#
+# Resolution verified 2026-11-06 in a clean Python 3.12 venv (pip --dry-run): crewai 1.15.36,
+# autogen-agentchat/core 0.7.5, langchain-core 1.7.6, chromadb 1.5.9, pydantic 2.12.5, protobuf 5.29.6,
+# fastapi 0.162.0, numpy 2.5.4. sentence-transformers/torch were not part of that resolution check.
+
+# --- Multi-agent orchestration (Part 2) ---
+crewai>=1.15,<2.0
+
+# --- Review stage (Part 4) — Microsoft AutoGen, NOT the "autogen"/"pyautogen" (AG2) packages ---
+autogen-agentchat==0.7.5
+autogen-core==0.7.5          # needs protobuf~=5.29; a clean resolve with crewai satisfies this
+
+# --- Session memory (Task 8) ---
+langchain-core>=1.0,<2.0
+
+# --- RAG core (Part 1) ---
+sentence-transformers>=5.0,<6.0
+chromadb                     # left to crewai's constraint (crewai 1.15.36 -> chromadb ~=1.5.9); code tested on 1.1.1 and 1.5.9
+numpy>=1.26
+
+# --- Schemas / API ---
+pydantic>=2.11.9,<2.13       # crewai 1.15.36 requires <2.13
+fastapi>=0.115
+uvicorn[standard]>=0.30      # [standard] adds websockets for WS /ws/chat
+
+# --- Tests ---
+pytest>=8.0
+httpx>=0.27                  # fastapi.testclient (HTTP + WebSocket)

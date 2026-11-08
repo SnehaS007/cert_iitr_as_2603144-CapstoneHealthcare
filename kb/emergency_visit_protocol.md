@@ -1,0 +1,2 @@
+# Emergency-visit protocol
+Practo clinics are outpatient facilities and are not equipped to handle medical emergencies. Patients with chest pain, severe bleeding, difficulty breathing, loss of consciousness, or signs of stroke should call the national emergency number 112 or go to the nearest hospital emergency department immediately. Clinic staff will provide first aid and arrange ambulance transfer if an emergency occurs on the premises. Emergency cases are never asked to wait for an appointment slot.

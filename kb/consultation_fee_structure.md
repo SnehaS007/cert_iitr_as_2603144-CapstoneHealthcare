@@ -1,0 +1,2 @@
+# Consultation-fee structure by specialty
+Consultation fees vary by specialty and by the individual doctor's experience. General Medicine consultations cost between INR 300 and INR 700, and Pediatrics consultations cost between INR 400 and INR 900. Dermatology consultations cost between INR 500 and INR 1,200, while Orthopedics consultations cost between INR 600 and INR 1,500. Cardiology consultations are the most expensive, ranging from INR 800 to INR 2,000. The exact fee is shown on the doctor's profile before the booking is confirmed.

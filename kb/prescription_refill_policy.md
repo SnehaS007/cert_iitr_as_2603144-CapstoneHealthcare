@@ -1,0 +1,2 @@
+# Prescription-refill policy
+A prescription can be refilled through the app without a new visit only if the original prescription is less than 90 days old. Refills are limited to medicines the prescribing doctor has marked as repeatable. Controlled medicines and antibiotics always require a fresh consultation before they can be prescribed again. Refill requests are reviewed by a doctor within 24 hours.

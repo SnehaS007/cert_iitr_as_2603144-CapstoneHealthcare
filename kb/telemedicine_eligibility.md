@@ -1,0 +1,2 @@
+# Telemedicine eligibility
+Video consultations are available for follow-up visits, prescription reviews, dermatology concerns that can be assessed on camera, and general medicine queries. Telemedicine is not suitable for chest pain, breathing difficulty, injuries, or any condition that needs a physical examination. Patients must be at least 18 years old to book a video consultation for themselves, and a parent or guardian must join for a child. Video consultations are charged at the same fee as an in-clinic visit with the same doctor.

@@ -1,0 +1,2 @@
+# Follow-up-visit discount policy
+A follow-up visit with the same doctor within 7 days of the original consultation is free of charge. A follow-up visit between 8 and 14 days after the original consultation receives a 50 percent discount on the consultation fee. Follow-up visits after 14 days are charged the full consultation fee. The discount applies only when the doctor marked a follow-up as required during the original visit.

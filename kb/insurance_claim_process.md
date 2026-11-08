@@ -1,0 +1,2 @@
+# Insurance-claim process
+Patients with health insurance must upload their insurance card and policy details in the app before the visit. After the consultation, the clinic issues an itemised invoice that the patient submits to the insurer along with the doctor's prescription. Cashless claims are supported only at clinics that are empanelled with the patient's insurer. Reimbursement claims are usually settled by the insurer within 15 to 30 working days of submission.

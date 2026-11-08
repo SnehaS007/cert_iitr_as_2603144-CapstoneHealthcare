@@ -1,0 +1,2 @@
+# Home-visit eligibility
+Home visits are available for patients over 65 years of age, patients with limited mobility, and newborns in their first month. Home visits can be booked only for General Medicine and Pediatrics. A home visit costs the doctor's consultation fee plus a travel charge of INR 300. Home visits must be booked at least 24 hours in advance and are available only within 10 kilometres of a partner clinic.

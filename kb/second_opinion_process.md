@@ -1,0 +1,2 @@
+# Second-opinion process
+Patients can request a second opinion from a different doctor in the same specialty through the app. The patient uploads existing reports and prescriptions, and the reviewing doctor responds with a written opinion within 48 hours. A second opinion is charged at the reviewing doctor's standard consultation fee. If the reviewing doctor needs a physical examination, the patient is offered a regular clinic appointment instead.

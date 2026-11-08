@@ -1,0 +1,2 @@
+# Cancellation and rescheduling window
+An appointment can be cancelled or rescheduled free of charge up to 4 hours before the scheduled slot. Changes made within 4 hours of the slot incur a fee equal to 25 percent of the consultation fee. Each appointment can be rescheduled a maximum of two times, after which it must be cancelled and booked again. A patient who does not arrive within 15 minutes of the slot is marked as a No-Show and the full consultation fee is charged.

@@ -1,0 +1,2 @@
+# Patient-data privacy policy
+Patient health records are stored encrypted and are visible only to the patient and the doctors they consult. Practo never shares a patient's medical information with employers or advertisers. A patient can download or request deletion of their health records at any time from the privacy settings in the app. Support staff will never ask a patient to share a password or one-time code by phone or chat.

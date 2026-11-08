@@ -1,0 +1,2 @@
+# Appointment-booking policy
+Patients can book a clinic appointment through the Practo app or website up to 30 days in advance. Each booking reserves a 15-minute consultation slot with one doctor and is confirmed by SMS once the slot is held. A patient may hold at most two upcoming appointments with the same specialty at any time. Walk-in visits are accepted only when an open slot remains on the clinic's schedule for that day.
