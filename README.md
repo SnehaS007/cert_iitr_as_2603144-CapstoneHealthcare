@@ -289,7 +289,7 @@ The crew runs `Process.sequential` via `crew.kickoff()`; CrewAI's own memory is 
 
 ### 5.4 Structured output (Task 9)
 
-`CrewDraft` is declared as the Composer's `output_pydantic`, **and** every crew result is re-validated in code (`CrewDraft.model_validate_json`). A mismatch between CrewAI's parse and the in-code validation raises `CrewOutputError`. The final API response is validated as `SupportResponse`.
+`CrewDraft` is declared as the Composer's `output_pydantic`, **and** every crew result is re-validated in code (`CrewDraft.model_validate_json`). A mismatch between CrewAI's parse and the in-code validation raises `CrewOutputError`. The final API response is validated as `SupportResponse`. `output_pydantic` is how you meet that requirement.
 
 ### 5.5 Guardrails (Task 10)
 
