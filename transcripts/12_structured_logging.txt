@@ -1,0 +1,38 @@
+### Task 12 - Structured JSONL logging
+### MOCK_LLM=True | embedder=sentence-transformers/all-MiniLM-L6-v2
+
+requests.jsonl: 42 JSON-Lines entries; every entry has a trace_id: True
+Entries containing the raw demo phone number: 0
+
+Sample entry with masked PII:
+{
+  "@timestamp": "2026-11-08T05:39:33.150103+00:00",
+  "trace_id": "342cf452eebf4f36af1f2e30d719f29d",
+  "endpoint": "/ask",
+  "session_id": "guard-demo",
+  "masked_query": "My number is [PHONE_MASKED], can I get a video consultation for my skin rash?",
+  "outcome": "answered",
+  "guardrail_events": [
+    "pii_masked:1"
+  ],
+  "record_id_source": "none",
+  "cache_hit": false,
+  "grounded": true,
+  "refusal_reason": null,
+  "review_approved": true,
+  "escalation_recommended": false,
+  "tokens_projected": 4360,
+  "cost_projected_usd": 0.01308,
+  "tokens_consumed": 3157,
+  "cost_consumed_usd": 0.009471,
+  "token_cap": 6000,
+  "stage_timings_ms": {
+    "input_guard": 0.04,
+    "budget": 0.02,
+    "memory": 0.01,
+    "crew": 185.6,
+    "output_guard": 0.04,
+    "review": 9.44
+  },
+  "total_ms": 197.71
+}

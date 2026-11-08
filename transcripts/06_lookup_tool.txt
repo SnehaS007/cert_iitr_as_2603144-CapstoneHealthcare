@@ -1,0 +1,17 @@
+### Task 6 - Lookup tool and escalation score
+### MOCK_LLM=True | embedder=sentence-transformers/all-MiniLM-L6-v2
+
+Formula: escalation_score = 0.6 * follow_up_required + 0.4 * (days_since_created / 30)
+days_since_created of follow-up records (n=11): [0, 2, 5, 12, 13, 14, 15, 19, 20, 22, 27]
+P50 = 14.0 days -> threshold = 0.6 + 0.4 * (14.0/30) = 0.7867
+Interpretation: escalate a follow-up appointment once it is at least as old as the median follow-up record (14 days, the end of the KB's discounted follow-up window).
+
+Escalated: 6/50 records (12%): ['APT-1003', 'APT-1034', 'APT-1036', 'APT-1038', 'APT-1043', 'APT-1045']
+
+check_appointment_status('APT-1003') -> status=Completed, consultation_fee_inr=750, escalation_score=0.8533 [= 0.6*1 + 0.4*(19/30)] -> escalate=True
+
+check_appointment_status('APT-1002') -> status=No-Show, consultation_fee_inr=700, escalation_score=0.76 [= 0.6*1 + 0.4*(12/30)] -> escalate=False
+
+check_appointment_status('APT-1001') -> status=Scheduled, consultation_fee_inr=300, escalation_score=0.2667 [= 0.6*0 + 0.4*(20/30)] -> escalate=False
+
+check_appointment_status('APT-9999') -> RecordNotFoundError (raised explicitly, no default)

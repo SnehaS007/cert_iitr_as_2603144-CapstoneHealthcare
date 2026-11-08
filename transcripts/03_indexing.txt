@@ -1,0 +1,16 @@
+### Task 3 - Chunking, embedding, indexing
+### MOCK_LLM=True | embedder=sentence-transformers/all-MiniLM-L6-v2
+
+Knowledge base: 12 documents from kb/
+Embedding model: sentence-transformers/all-MiniLM-L6-v2
+Fixed-size strategy: 40-word windows, 10-word overlap
+Sentence strategy: 1 sentence(s) per chunk
+
+[kb_fixed] 29 chunks; first two:
+  appointment_booking_policy::fixed::0: Patients can book a clinic appointment through the Practo app or website up to 30 days in advance. Each booking reserves a 15-minute consultation slot with one doctor and is confirmed by SMS once the slot is held. A patient
+  appointment_booking_policy::fixed::1: confirmed by SMS once the slot is held. A patient may hold at most two upcoming appointments with the same specialty at any time. Walk-in visits are accepted only when an open slot remains on the clinic's schedule for that
+[kb_sentence] 49 chunks; first two:
+  appointment_booking_policy::sentence::0: Patients can book a clinic appointment through the Practo app or website up to 30 days in advance.
+  appointment_booking_policy::sentence::1: Each booking reserves a 15-minute consultation slot with one doctor and is confirmed by SMS once the slot is held.
+
+Indexed (collection.upsert): {'kb_fixed': 29, 'kb_sentence': 49} at artifacts\chroma/

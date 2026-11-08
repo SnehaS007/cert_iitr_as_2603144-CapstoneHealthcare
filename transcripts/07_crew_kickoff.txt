@@ -1,0 +1,22 @@
+### Task 7 - CrewAI crew via kickoff()
+### MOCK_LLM=True | embedder=sentence-transformers/all-MiniLM-L6-v2
+
+=== Policy question (RAG tool): How much does a cardiology consultation cost?
+  crew.kickoff() agent events: [{"agent": "Retrieval Agent", "event": "tool_call", "tool": "rag_lookup", "args": {"query": "How much does a cardiology consultation cost?"}}, {"agent": "Retrieval Agent", "event": "final_answer_from_tool"}, {"agent": "Lookup Agent", "event": "no_tool_input"}, {"agent": "Response Composer", "event": "compose", "grounded": true}]
+  rag_lookup invoked with: ['How much does a cardiology consultation cost?']
+  check_appointment_status invoked with: []
+  answer: Cardiology consultations are the most expensive, ranging from INR 800 to INR 2,000. General Medicine consultations cost between INR 300 and INR 700, and Pediatrics consultations cost between INR 400 and INR 900.
+  grounded=True sources=['consultation_fee_structure'] refusal_reason=None
+  review: approved=True reason=All claims are supported by the evidence.
+  guardrail_events=[] cache_hit=False
+
+=== Record question (lookup tool): What is the status of appointment APT-1003?
+  crew.kickoff() agent events: [{"agent": "Retrieval Agent", "event": "tool_call", "tool": "rag_lookup", "args": {"query": "What is the status of appointment APT-1003?"}}, {"agent": "Retrieval Agent", "event": "final_answer_from_tool"}, {"agent": "Lookup Agent", "event": "tool_call", "tool": "check_appointment_status", "args": {"record_id": "APT-1003"}}, {"agent": "Lookup Agent", "event": "final_answer_from_tool"}, {"agent": "Response Composer", "event": "compose", "grounded": true}]
+  rag_lookup invoked with: ['What is the status of appointment APT-1003?']
+  check_appointment_status invoked with: ['APT-1003']
+  answer: Patients can book a clinic appointment through the Practo app or website up to 30 days in advance. A patient may hold at most two upcoming appointments with the same specialty at any time. Appointment APT-1003 (Pediatrics) is currently Completed. The consultation fee for appointment APT-1003 is INR 750. The doctor marked a follow-up visit as required for appointment APT-1003. This appointment has been flagged for a call from our patient-care team.
+  grounded=True sources=['appointment_booking_policy', 'appointment_records'] refusal_reason=None
+  appointment: APT-1003 Pediatrics Completed fee=INR 750 escalation_score=0.8533 (threshold 0.7867) -> escalate=True
+  review: approved=True reason=All claims are supported by the evidence.
+  guardrail_events=[] cache_hit=False
+

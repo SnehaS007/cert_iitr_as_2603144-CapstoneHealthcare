@@ -1,0 +1,19 @@
+### Task 8 - Session memory: multi-turn
+### MOCK_LLM=True | embedder=sentence-transformers/all-MiniLM-L6-v2
+
+Turn 1 [session memory-demo] user: Hi, my appointment ID is APT-1003. What is its status?
+  record_id resolved from: query -> APT-1003
+  answer: Patients can book a clinic appointment through the Practo app or website up to 30 days in advance. Each booking reserves a 15-minute consultation slot with one doctor and is confirmed by SMS once the slot is held. Appointment APT-1003 (Pediatrics) is currently Completed. The consultation fee for appointment APT-1003 is INR 750. The doctor marked a follow-up visit as required for appointment APT-1003. This appointment has been flagged for a call from our patient-care team.
+  grounded=True sources=['appointment_booking_policy', 'appointment_records'] refusal_reason=None
+  appointment: APT-1003 Pediatrics Completed fee=INR 750 escalation_score=0.8533 (threshold 0.7867) -> escalate=True
+  review: approved=True reason=All claims are supported by the evidence.
+  guardrail_events=[] cache_hit=False
+Turn 2 [session memory-demo] user: What was the consultation fee for it?
+  record_id resolved from: session_memory -> APT-1003
+  answer: The exact fee is shown on the doctor's profile before the booking is confirmed. A second opinion is charged at the reviewing doctor's standard consultation fee. Appointment APT-1003 (Pediatrics) is currently Completed. The consultation fee for appointment APT-1003 is INR 750. The doctor marked a follow-up visit as required for appointment APT-1003. This appointment has been flagged for a call from our patient-care team.
+  grounded=True sources=['consultation_fee_structure', 'second_opinion_process', 'appointment_records'] refusal_reason=None
+  appointment: APT-1003 Pediatrics Completed fee=INR 750 escalation_score=0.8533 (threshold 0.7867) -> escalate=True
+  review: approved=True reason=All claims are supported by the evidence.
+  guardrail_events=[] cache_hit=False
+
+Stored history for memory-demo: 4 messages
